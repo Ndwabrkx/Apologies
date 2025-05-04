@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>I'm Truly Sorry</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #ffeef2, #ffffff);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+      color: #333;
+    }
+
+    .card {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      max-width: 600px;
+      animation: fadeIn 2s ease;
+      z-index: 1;
+    }
+
+    h1 {
+      color: #e57373;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin: 1rem 0;
+    }
+
+    button {
+      background-color: #e57373;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #d35454;
+    }
+
+    .hearts {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .heart {
+      position: absolute;
+      color: #ff8fa3;
+      font-size: 2rem;
+      animation: floatUp 4s infinite ease-in;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Modal Styling */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 500px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      animation: fadeIn 0.5s ease;
+    }
+
+    .modal-content p {
+      font-size: 1.05rem;
+      color: #444;
+    }
+
+    .modal-content button {
+      background-color: #e57373;
+      margin-top: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hearts" id="hearts"></div>
+
+  <div class="card">
+    <h1>My Little Devil,</h1>
+    <p>
+      I want to start by saying I'm truly sorry. I know I didn’t read between the lines when you needed me to, and that hurts me more than I can express. Your emotions, your silences, your subtle hints — I missed them when I should have leaned in closer. Your asshole of a boyrfriend should listen with his heart, not just his ears. I should have been better , be someone who understands, supports, and never lets you feel unseen again. Please forgive me for not recognizing what you were trying to say. I'm learning, growing, and I promise to do better — because you mean the world to me. I love you deeply, and I never want to make you feel unheard again. ❤️
+    </p>
+    <button onclick="showModal()">Apology Accepted? 💌</button>
+  </div>
+
+  <!-- Custom Modal -->
+  <div class="modal" id="loveModal">
+    <div class="modal-content">
+      <p>
+        My love, no matter how many times I falter, my heart always beats for you. You are the melody in my silence, the calm in my chaos, and the light in my shadows. I love you with every fiber of my being. I may not always get it right, but please know — my intentions, my devotion, and my soul are yours. Forever and always. 💖
+      </p>
+      <button onclick="closeModal()">Okay 💗</button>
+    </div>
+  </div>
+
+  <script>
+    function showModal() {
+      document.getElementById("loveModal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("loveModal").style.display = "none";
+      showHearts();
+    }
+
+    function showHearts() {
+      const hearts = document.getElementById("hearts");
+      for (let i = 0; i < 40; i++) {
+        let heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDelay = Math.random() * 2 + "s";
+        heart.textContent = "💗";
+        hearts.appendChild(heart);
+        setTimeout(() => {
+          heart.remove();
+        }, 5000);
+      }
+    }
+  </script>
+
+</body>
+</html>
